@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+# If a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise forward it to index.php
+RewriteRule . index.php
+</IfModule>
+
+#<IfModule mod_headers.c>
+#    Header  append Cache-Control "public"
+#</IfModule>
+
+#<IfModule mod_expires.c>
+#    ExpiresActive  On
+#    ExpiresDefault  "access plus 1 hours"
+#</IfModule>
