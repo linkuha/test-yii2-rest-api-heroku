@@ -1,11 +1,13 @@
 <?php
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$dbname = ltrim($dbopts["path"],'/');
 return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=random',
-            'username' => 'random_usr',
-            'password' => '3e2w1qqwe',
+            'dsn' => "pgsql:host={$dbopts['host']};port={$dbopts['port']};dbname=$dbname",	//not mysql:
+            'username' => $dbopts["user"], //'random_usr',
+            'password' => $dbopts["pass"], //'3e2w1qqwe',
             'charset' => 'utf8',
         ],
         'mailer' => [
