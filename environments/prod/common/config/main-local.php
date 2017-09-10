@@ -1,4 +1,6 @@
 <?php
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$dbname = ltrim($dbopts["path"],'/');
 return [
     'components' => [
         'db' => [
