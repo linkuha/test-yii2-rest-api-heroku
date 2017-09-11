@@ -17,7 +17,7 @@ return [
             'dsn' => "pgsql:host=$host;port=$port;dbname=$dbname",	//not mysql:
             'username' => $username, //'random_usr',
             'password' => $password, //'3e2w1qqwe',
-            'charset' => 'utf8',
+            //'charset' => 'utf8',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
