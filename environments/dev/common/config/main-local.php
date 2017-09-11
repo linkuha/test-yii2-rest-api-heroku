@@ -1,6 +1,8 @@
 <?php
 $host = $username = $password = $dbname = '';
-$url = parse_url(getenv('DATABASE_URL'));
+
+$driver = 'mysql'; // 'pgsql';
+$url = parse_url(getenv('CLEARDB_DATABASE_URL')); // DATABASE_URL
 
 if (isset($url["host"]) && isset($url["user"]) && isset($url["pass"]) && isset($url["path"])) {
 	$host = $url["host"];
@@ -14,10 +16,10 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => "pgsql:host=$host;port=$port;dbname=$dbname",	//not mysql:
+            'dsn' => "$driver:host=$host;port=$port;dbname=$dbname",	//not mysql:
             'username' => $username, //'random_usr',
             'password' => $password, //'3e2w1qqwe',
-            //'charset' => 'utf8',
+            'charset' => 'utf8',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
