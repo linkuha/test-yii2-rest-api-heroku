@@ -44,7 +44,7 @@ class RandomNumber extends ActiveRecord implements Linkable
 	public function fields()
 	{
 		return [
-			'number' => 'number',
+			'id' => 'id',
 		];
 	}
 
@@ -52,7 +52,7 @@ class RandomNumber extends ActiveRecord implements Linkable
 	public function extraFields()
 	{
 		return [
-			'id' => 'id',
+			//'id' => 'id',
 			'created_at' => function () {
 				return date(DATE_RFC3339, $this->created_at);
 			},
@@ -62,8 +62,13 @@ class RandomNumber extends ActiveRecord implements Linkable
 	public function getLinks()
 	{
 		return [
-			'self' => Url::to(['random-number/retrieve-get', 'id' => $this->id], true),
+			'self' => $this->getLinkSelf(),
 		];
+	}
+
+	public function getLinkSelf()
+	{
+		return Url::to(["retrieve/$this->id"], true);
 	}
 
 	public function generate($params)

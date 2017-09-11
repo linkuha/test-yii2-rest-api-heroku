@@ -83,7 +83,14 @@ HTML;
 				'code' => 404,
 			];
 		}
-		return $model;
+		return [
+			'number' => $model->number,
+			'_links' => [
+				'self' => [
+					'href' => $model->getLinkSelf()
+				]
+			]
+		];
 	}
 
 	public function actionRetrievePost()
@@ -101,7 +108,14 @@ HTML;
 				'code' => 404,
 			];
 		}
-		return $model;
+		return [
+			'number' => $model->number,
+			'_links' => [
+				'self' => [
+					'href' => $model->getLinkSelf()
+				]
+			]
+		];
 	}
 
 
