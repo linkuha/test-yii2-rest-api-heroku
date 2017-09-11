@@ -9,9 +9,7 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-
-        "yiisoft/yii2-debug": "~2.0.0",
-        "yiisoft/yii2-gii": "~2.0.0"
+        "vlucas/phpdotenv": "v2.1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -21,7 +19,8 @@
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
         "guzzlehttp/guzzle": "^6.2",
-        "flow/jsonpath": "^0.3.4"
+        "flow/jsonpath": "^0.3.4",
+        "heroku/heroku-buildpack-php": "*"
     },
     "config": {
         "process-timeout": 1800

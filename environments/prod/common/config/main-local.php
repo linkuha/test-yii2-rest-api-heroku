@@ -1,13 +1,21 @@
 <?php
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$dbname = ltrim($dbopts["path"],'/');
+$host = $username = $password = $dbname = '';
+$url = parse_url(getenv('DATABASE_URL'));
+
+if (isset($url["host"]) && isset($url["user"]) && isset($url["pass"]) && isset($url["path"])) {
+	$host = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$dbname = ltrim($url["path"],'/'); //substr($url["path"], 1);
+	$port = $url["port"];
+}
 return [
     'components' => [
         'db' => [
 			'class' => 'yii\db\Connection',
-			'dsn' => "pgsql:host={$dbopts['host']};port={$dbopts['port']};dbname=$dbname",	//not mysql:
-			'username' => $dbopts["user"], //'random_usr',
-			'password' => $dbopts["pass"], //'3e2w1qqwe',
+			'dsn' => "pgsql:host=$host;port=$port;dbname=$dbname",	//not mysql:
+			'username' => $username, //'random_usr',
+			'password' => $password, //'3e2w1qqwe',
 			'charset' => 'utf8',
         ],
         'mailer' => [
