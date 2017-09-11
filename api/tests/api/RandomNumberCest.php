@@ -109,6 +109,7 @@ class RandomNumberCest
 		]);
 	}
 
+	// test application/x-www-form-urlencoded
 	public function retrievePost(ApiTester $I)
 	{
 		$I->haveHttpHeader('Accept', 'application/json');
